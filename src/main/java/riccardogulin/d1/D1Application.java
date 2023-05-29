@@ -3,8 +3,10 @@ package riccardogulin.d1;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
+import riccardogulin.d1.entities.BackendStudent;
 import riccardogulin.d1.entities.Interviewer;
 
 @SpringBootApplication
@@ -20,7 +22,8 @@ public class D1Application {
 //
 //		i.askQuestion();
 
-		configWithConfigurationAnnotation();
+		// configWithConfigurationAnnotation();
+		configWithXML();
 	}
 
 	public static void configWithConfigurationAnnotation() {
@@ -37,6 +40,16 @@ public class D1Application {
 		log.info(i1.toString());
 		log.info(i2.toString());
 
+		ctx.close();
+	}
+
+	public static void configWithXML() {
+		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
+		BackendStudent b = (BackendStudent) ctx.getBean("ajeje");
+		System.out.println(b);
+
+		Interviewer i = (Interviewer) ctx.getBean("interviewer");
+		System.out.println(i.toString());
 		ctx.close();
 	}
 

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <bean id="ajeje" class="riccardogulin.d1.entities.BackendStudent" scope="prototype">
+    	<constructor-arg index="0" type="String" value="Ajeje"></constructor-arg>
+        <!-- <property name="name" value="Gianni"></property> -->
+    </bean>
+    <bean id="interviewer" class="riccardogulin.d1.entities.Interviewer">
+    	<constructor-arg index="0" type="String" value="Marina"></constructor-arg>
+    	<constructor-arg index="1" type="riccardogulin.d1.entities.IStudent" ref="ajeje"></constructor-arg>
+    </bean>
+</beans>
