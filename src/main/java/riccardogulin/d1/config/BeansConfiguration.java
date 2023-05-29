@@ -15,7 +15,7 @@ public class BeansConfiguration {
 
 	@Bean(name = "getName") // Obbligatorio usarlo, altrimenti non mi troverà tali Bean
 	String name() {
-		return "Giacomo";
+		return "Giorgio";
 	}
 
 	@Bean

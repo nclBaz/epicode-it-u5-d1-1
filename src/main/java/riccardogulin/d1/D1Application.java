@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import lombok.extern.slf4j.Slf4j;
 import riccardogulin.d1.entities.BackendStudent;
+import riccardogulin.d1.entities.FullstackStudent;
 import riccardogulin.d1.entities.Interviewer;
 
 @SpringBootApplication
@@ -23,7 +24,9 @@ public class D1Application {
 //		i.askQuestion();
 
 		// configWithConfigurationAnnotation();
-		configWithXML();
+		// configWithXML();
+		
+		configWithComponent();
 	}
 
 	public static void configWithConfigurationAnnotation() {
@@ -50,6 +53,17 @@ public class D1Application {
 
 		Interviewer i = (Interviewer) ctx.getBean("interviewer");
 		System.out.println(i.toString());
+		ctx.close();
+	}
+
+	public static void configWithComponent() {
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
+		ctx.scan("riccardogulin.d1");
+		ctx.refresh();
+		FullstackStudent f = ctx.getBean(FullstackStudent.class);
+		// f.setName("Ajeje");
+		log.info(f.toString());
+
 		ctx.close();
 	}
 
